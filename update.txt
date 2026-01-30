@@ -1,0 +1,5 @@
+
+echo "$(Get-Date -Format 'MM-dd'): C - 2ч, изучала указатели" >> progress.txt
+git add progress.txt
+git commit -m "C: указатели | 2ч"
+git push
