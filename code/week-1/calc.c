@@ -1,27 +1,27 @@
 #include <stdio.h>
 
-int main() {
-    float a, b;
-    char op;
+int main()
+{
+    float num1, num2;
     
-    printf("Введите пример (например: 5 + 3): ");
-    scanf("%f %c %f", &a, &op, &b);
+    /* Ввод чисел */
+    printf("Введите первое число: ");
+    scanf("%f", &num1);
     
-    if (op == '+') {
-        printf("Ответ: %.2f\n", a + b);
-    } else if (op == '-') {
-        printf("Ответ: %.2f\n", a - b);
-    } else if (op == '*') {
-        printf("Ответ: %.2f\n", a * b);
-    } else if (op == '/') {
-        if (b != 0) {
-            printf("Ответ: %.2f\n", a / b);
-        } else {
-            printf("Ошибка: деление на ноль!\n");
-        }
-    } else {
-        printf("Неизвестная операция\n");
-    }
+    printf("Введите второе число: ");
+    scanf("%f", &num2);
+    
+    /* Вычисления и вывод */
+    printf("\nРезультаты:\n");
+    printf("%.2f + %.2f = %.2f\n", num1, num2, num1 + num2);
+    printf("%.2f - %.2f = %.2f\n", num1, num2, num1 - num2);
+    printf("%.2f * %.2f = %.2f\n", num1, num2, num1 * num2);
+    
+    /* Проверка деления на ноль */
+    if(num2 != 0)
+        printf("%.2f / %.2f = %.2f\n", num1, num2, num1 / num2);
+    else
+        printf("Деление на ноль невозможно!\n");
     
     return 0;
 }
