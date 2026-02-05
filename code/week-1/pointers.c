@@ -75,3 +75,25 @@ int main()
     
     return 0;
 }
+
+#include <stdio.h>
+
+// Функция принимает указатель
+void change_value(int *p)
+{
+    *p = 999;  // меняем значение по адресу
+}
+
+int main()
+{
+    int num = 10;
+    
+    printf("До вызова функции: num = %d\n", num);
+    
+    // Передаем адрес переменной
+    change_value(&num);
+    
+    printf("После вызова функции: num = %d\n", num);
+    
+    return 0;
+}
