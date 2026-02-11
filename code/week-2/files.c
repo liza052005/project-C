@@ -5,7 +5,7 @@ int main()
     FILE *file;  // указатель на файл
     
     // Открываем файл для записи (w = write)
-    file = fopen("myfile.txt", "w");
+    file = fopen("treni.txt", "w");
     
     if(file == NULL)
     {
@@ -33,7 +33,7 @@ int main()
     char line[200];  // буфер для строки
     
     // Открываем для чтения (r = read)
-    file = fopen("myfile.txt", "r");
+    file = fopen("treni.txt", "r");
     
     if(file == NULL)
     {
@@ -63,7 +63,7 @@ int main()
     int i, num;
     
     // ЗАПИСЬ
-    file = fopen("numbers.txt", "w");
+    file = fopen("treni.txt", "w");
     
     if(file == NULL)
     {
@@ -82,7 +82,7 @@ int main()
     
     // ЧТЕНИЕ
     printf("\nЧтение из файла:\n");
-    file = fopen("numbers.txt", "r");
+    file = fopen("treni.txt", "r");
     
     while(fscanf(file, "%d", &num) == 1)
     {
@@ -115,7 +115,7 @@ int main()
     scanf("%f", &s.grade);
     
     // Запись в файл
-    file = fopen("students.txt", "a");  // a = append (добавить)
+    file = fopen("treni.txt", "a");  // a = append (добавить)
     
     if(file == NULL)
     {
@@ -151,7 +151,7 @@ int main()
     printf("Введите имя для поиска: ");
     scanf("%s", search_name);
     
-    file = fopen("students.txt", "r");
+    file = fopen("treni.txt", "r");
     
     if(file == NULL)
     {
