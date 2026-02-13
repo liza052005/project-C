@@ -39,3 +39,30 @@ int main()
     
     return 0;
 }
+#include <stdio.h>
+
+// Своя функция копирования строки
+void my_strcpy(char dest[], char src[])
+{
+    int i = 0;
+    
+    while(src[i] != '\0')
+    {
+        dest[i] = src[i];
+        i++;
+    }
+    dest[i] = '\0';  // обязательно добавить нуль-символ!
+}
+
+int main()
+{
+    char source[100] = "Привет, мир!";
+    char destination[100];
+    
+    my_strcpy(destination, source);
+    
+    printf("Исходная строка: %s\n", source);
+    printf("Скопированная: %s\n", destination);
+    
+    return 0;
+}
