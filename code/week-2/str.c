@@ -104,3 +104,45 @@ int main()
     
     return 0;
 }
+#include <stdio.h>
+
+// Своя функция склеивания строк
+void my_strcat(char dest[], char src[])
+{
+    int i = 0;
+    int j = 0;
+    
+    // Ищем конец первой строки
+    while(dest[i] != '\0')
+    {
+        i++;
+    }
+    
+    // Добавляем символы из второй строки
+    while(src[j] != '\0')
+    {
+        dest[i] = src[j];
+        i++;
+        j++;
+    }
+    
+    // Добавляем нуль-символ в конце
+    dest[i] = '\0';
+}
+
+int main()
+{
+    char greeting[100] = "Привет, ";
+    char name[50];
+    
+    printf("Как тебя зовут? ");
+    scanf("%s", name);
+    
+    my_strcat(greeting, name);
+    my_strcat(greeting, "!");
+    
+    printf("%s\n", greeting);
+    printf("Длина: %d\n", my_strlen(greeting));
+    
+    return 0;
+}
