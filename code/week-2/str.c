@@ -66,3 +66,41 @@ int main()
     
     return 0;
 }
+#include <stdio.h>
+
+// Своя функция сравнения строк
+// Возвращает 0 - если строки равны
+// Возвращает 1 - если не равны
+int my_strcmp(char str1[], char str2[])
+{
+    int i = 0;
+    
+    while(str1[i] != '\0' && str2[i] != '\0')
+    {
+        if(str1[i] != str2[i])
+            return 1;  // символы не совпали
+        i++;
+    }
+    
+    // Проверяем, обе ли строки закончились
+    if(str1[i] == '\0' && str2[i] == '\0')
+        return 0;      // строки равны
+    else
+        return 1;      // разная длина
+}
+
+int main()
+{
+    char pass[50] = "secret";
+    char input[50];
+    
+    printf("Введите пароль: ");
+    scanf("%s", input);
+    
+    if(my_strcmp(pass, input) == 0)
+        printf("Доступ разрешен!\n");
+    else
+        printf("Неверный пароль!\n");
+    
+    return 0;
+}
