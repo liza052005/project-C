@@ -6,7 +6,8 @@ int main()
     char city[50];
     
     printf("Введите ваше имя: ");
-    scanf("%s", name);  // %s для строк, & НЕ НУЖНО!
+    scanf("%s", name); 
+     // %s для строк, & НЕ НУЖНО!
     
     printf("Введите ваш город: ");
     scanf("%s", city);
