@@ -34,7 +34,7 @@ int main()
         printf("Введите пароль (осталось %d попыток): ", attempts);
         scanf("%s", input);
         
-       
+        // strcmp возвращает 0 если строки равны
         if(strcmp(input, password) == 0)
         {
             printf("Доступ разрешен!\n");
