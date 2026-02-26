@@ -20,7 +20,8 @@ int main()
 
 
 #include <stdio.h>
-#include <string.h>  // для strcmp
+#include <string.h> 
+ // для strcmp
 
 int main()
 {
