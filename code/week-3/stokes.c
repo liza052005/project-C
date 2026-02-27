@@ -50,3 +50,45 @@ int main()
     printf("Доступ заблокирован!\n");
     return 1;
 }
+#include <stdio.h>
+#include <string.h>
+
+int count_words(char str[])
+{
+    int count = 0;
+    int i = 0;
+    int in_word = 0;  // флаг: находимся ли мы внутри слова
+    
+    while(str[i] != '\0')
+    {
+        if(str[i] != ' ' && in_word == 0)
+        {
+            // Начало нового слова
+            count++;
+            in_word = 1;
+        }
+        else if(str[i] == ' ')
+        {
+            // Пробел - вышли из слова
+            in_word = 0;
+        }
+        i++;
+    }
+    
+    return count;
+}
+
+int main()
+{
+    char text[200];
+    
+    printf("Введите предложение: ");
+    fgets(text, sizeof(text), stdin);  // читает с пробелами
+    
+    // fgets оставляет \n в конце, убираем его
+    text[strlen(text)-1] = '\0';
+    
+    printf("Количество слов: %d\n", count_words(text));
+    
+    return 0;
+}
