@@ -92,3 +92,45 @@ int main()
     
     return 0;
 }
+#include <stdio.h>
+#include <string.h>
+
+void reverse_string(char str[])
+{
+    int length = strlen(str);
+    int i, j;
+    char temp;
+    
+    i = 0;            // первый символ
+    j = length - 1;   // последний символ (без '\0')
+    
+    while(i < j)
+    {
+        // меняем местами символы
+        temp = str[i];
+        str[i] = str[j];
+        str[j] = temp;
+        
+        i++;
+        j--;
+    }
+}
+
+int main()
+{
+    char text[100];
+    
+    printf("Введите строку: ");
+    fgets(text, sizeof(text), stdin);
+    
+    // Убираем \n из конца
+    text[strlen(text)-1] = '\0';
+    
+    printf("Исходная строка: %s\n", text);
+    
+    reverse_string(text);
+    
+    printf("Перевернутая: %s\n", text);
+    
+    return 0;
+}
