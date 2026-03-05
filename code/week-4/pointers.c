@@ -26,3 +26,30 @@ int main()
     
     return 0;
 }
+#include <stdio.h>
+
+int main()
+{
+    int arr[5] = {10, 20, 30, 40, 50};
+    int *ptr;
+    
+    ptr = arr;  // то же самое что ptr = &arr[0]
+    
+    printf("=== МАССИВ И УКАЗАТЕЛИ ===\n");
+    printf("arr[0] = %d\n", arr[0]);
+    printf("*arr = %d\n", *arr);
+    printf("ptr = %p, arr = %p\n", ptr, arr);
+    
+    printf("\n=== ДОСТУП К ЭЛЕМЕНТАМ ===\n");
+    printf("arr[2] = %d\n", arr[2]);
+    printf("*(arr + 2) = %d\n", *(arr + 2));
+    printf("*(ptr + 2) = %d\n", *(ptr + 2));
+    printf("ptr[2] = %d\n", ptr[2]);
+    
+    printf("\n=== АДРЕСА ===\n");
+    printf("&arr[2] = %p\n", &arr[2]);
+    printf("arr + 2 = %p\n", arr + 2);
+    printf("ptr + 2 = %p\n", ptr + 2);
+    
+    return 0;
+}
