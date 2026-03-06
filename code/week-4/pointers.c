@@ -53,3 +53,32 @@ int main()
     
     return 0;
 }
+#include <stdio.h>
+
+int main()
+{
+    int x = 10;
+    int *ptr1 = &x;      // указатель на int
+    int **ptr2 = &ptr1;  // указатель на указатель на int
+    int ***ptr3 = &ptr2; // указатель на указатель на указатель на int
+    
+    printf("x = %d\n", x);
+    printf("&x = %p\n", &x);
+    
+    printf("\n=== УРОВЕНЬ 1 ===\n");
+    printf("ptr1 = %p (адрес x)\n", ptr1);
+    printf("*ptr1 = %d (значение x)\n", *ptr1);
+    
+    printf("\n=== УРОВЕНЬ 2 ===\n");
+    printf("ptr2 = %p (адрес ptr1)\n", ptr2);
+    printf("*ptr2 = %p (значение ptr1 - адрес x)\n", *ptr2);
+    printf("**ptr2 = %d (значение x)\n", **ptr2);
+    
+    printf("\n=== УРОВЕНЬ 3 ===\n");
+    printf("ptr3 = %p (адрес ptr2)\n", ptr3);
+    printf("*ptr3 = %p (значение ptr2 - адрес ptr1)\n", *ptr3);
+    printf("**ptr3 = %p (значение ptr1 - адрес x)\n", **ptr3);
+    printf("***ptr3 = %d (значение x)\n", ***ptr3);
+    
+    return 0;
+}
