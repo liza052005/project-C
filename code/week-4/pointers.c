@@ -82,3 +82,38 @@ int main()
     
     return 0;
 }
+#include <stdio.h>
+
+// НЕПРАВИЛЬНО: передача по значению
+void bad_swap(int a, int b)
+{
+    int temp = a;
+    a = b;
+    b = temp;
+    printf("Внутри функции: a=%d, b=%d\n", a, b);
+}
+
+// ПРАВИЛЬНО: передача по ссылке (через указатели)
+void good_swap(int *a, int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main()
+{
+    int x = 5, y = 10;
+    
+    printf("До swap: x=%d, y=%d\n", x, y);
+    
+    // Пытаемся поменять (НЕ РАБОТАЕТ)
+    bad_swap(x, y);
+    printf("После bad_swap: x=%d, y=%d (не изменились!)\n", x, y);
+    
+    // Правильный swap (РАБОТАЕТ)
+    good_swap(&x, &y);
+    printf("После good_swap: x=%d, y=%d (поменялись!)\n", x, y);
+    
+    return 0;
+}
