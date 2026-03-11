@@ -117,3 +117,54 @@ int main()
     
     return 0;
 }
+
+#include <stdio.h>
+
+// Функции для операций
+int add(int a, int b) { return a + b; }
+int subtract(int a, int b) { return a - b; }
+int multiply(int a, int b) { return a * b; }
+int divide(int a, int b) { 
+    if(b != 0) return a / b;
+    else return 0;
+}
+
+int main()
+{
+    // Массив указателей на функции
+    int (*operations[4])(int, int) = {add, subtract, multiply, divide};
+    
+    int choice, x, y, i;
+    
+    printf("=== КАЛЬКУЛЯТОР С УКАЗАТЕЛЯМИ НА ФУНКЦИИ ===\n");
+    printf("1. Сложение\n");
+    printf("2. Вычитание\n");
+    printf("3. Умножение\n");
+    printf("4. Деление\n");
+    printf("Выберите операцию: ");
+    scanf("%d", &choice);
+    
+    printf("Введите два числа: ");
+    scanf("%d %d", &x, &y);
+    
+    if(choice >= 1 && choice <= 4)
+    {
+        // Вызываем функцию через указатель
+        int result = operations[choice-1](x, y);
+        
+        printf("\nРезультат: %d\n", result);
+        
+        // Покажем адреса функций
+        printf("\nАдреса функций:\n");
+        for(i = 0; i < 4; i++)
+        {
+            printf("Функция %d: %p\n", i+1, operations[i]);
+        }
+    }
+    else
+    {
+        printf("Неверный выбор!\n");
+    }
+    
+    return 0;
+}
