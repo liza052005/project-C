@@ -168,3 +168,46 @@ int main()
     
     return 0;
 }
+
+#include <stdio.h>
+#include <stdlib.h>
+
+// Функция для демонстрации всего сразу
+void demonstrate_pointers()
+{
+    printf("=== ДЕМОНСТРАЦИЯ ВСЕГО ===\n\n");
+    
+    // 1. Простые указатели
+    int a = 10;
+    int *p = &a;
+    printf("1. Простой указатель: a=%d, *p=%d\n", a, *p);
+    
+    // 2. Указатель на указатель
+    int **pp = &p;
+    printf("2. Указатель на указатель: **pp=%d\n", **pp);
+    
+    // 3. Указатели и массивы
+    int arr[] = {1, 2, 3, 4, 5};
+    int *arr_p = arr;
+    printf("3. Массив: arr[2]=%d, *(arr+2)=%d, arr_p[2]=%d\n", 
+           arr[2], *(arr+2), arr_p[2]);
+    
+    // 4. Арифметика указателей
+    printf("4. Арифметика: arr_p=%p, arr_p+1=%p (размер int)\n", 
+           arr_p, arr_p+1);
+    
+    // 5. Динамическая память
+    int *dyn = (int*)malloc(3 * sizeof(int));
+    if(dyn)
+    {
+        dyn[0] = 100; dyn[1] = 200; dyn[2] = 300;
+        printf("5. Динамическая: *dyn=%d, *(dyn+2)=%d\n", *dyn, *(dyn+2));
+        free(dyn);
+    }
+}
+
+int main()
+{
+    demonstrate_pointers();
+    return 0;
+}
