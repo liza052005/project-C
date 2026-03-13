@@ -26,5 +26,11 @@ int main()
         {
             sum_main += matrix[i][i];  // matrix[0][0], matrix[1][1], matrix[2][2]
         }
+        double sum_secondary = 0;  // сумма побочной диагонали
+
+        for(i = 0; i < 3; i++)
+        {
+            sum_secondary += matrix[i][2 - i];  // matrix[0][2], matrix[1][1], matrix[2][0]
+        }
     return 0;
 }
