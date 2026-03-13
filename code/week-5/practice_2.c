@@ -32,5 +32,7 @@ int main()
         {
             sum_secondary += matrix[i][2 - i];  // matrix[0][2], matrix[1][1], matrix[2][0]
         }
+        printf("\nСумма главной диагонали: %.2f\n", sum_main);
+        printf("Сумма побочной диагонали: %.2f\n", sum_secondary);
     return 0;
 }
