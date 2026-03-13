@@ -52,5 +52,46 @@ int main()
                 scanf("%d", &matrix2[i][j]);
             }
         }
+            printf("\nВведенная матрица 2x2:\n");
+    for(i = 0; i < 2; i++)
+    {
+        for(j = 0; j < 2; j++)
+        {
+            printf("%d\t", matrix2[i][j]);
+        }
+        printf("\n");
+    }
+    int result[2][2];  // матрица для результата
+
+// Получаем элементы исходной матрицы для удобства
+int a = matrix2[0][0];
+int b = matrix2[0][1];
+int c = matrix2[1][0];
+int d = matrix2[1][1];
+
+// Вычисляем квадрат
+result[0][0] = a*a + b*c;
+result[0][1] = a*b + b*d;
+result[1][0] = c*a + d*c;
+result[1][1] = c*b + d*d;
+printf("\nИсходная матрица:\n");
+for(i = 0; i < 2; i++)
+{
+    for(j = 0; j < 2; j++)
+    {
+        printf("%d\t", matrix2[i][j]);
+    }
+    printf("\n");
+}
+
+printf("\nКвадрат матрицы:\n");
+for(i = 0; i < 2; i++)
+{
+    for(j = 0; j < 2; j++)
+    {
+        printf("%d\t", result[i][j]);
+    }
+    printf("\n");
+}
     return 0;
 }
