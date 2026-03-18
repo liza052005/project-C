@@ -1,9 +1,15 @@
-
 int main()
 {
+    char str[81];
+    printf("Введите строку до 80 символов: ");
+    fgets(str, 81, stdin);
+    printf("Исходная строка: %s", str);
     
-char str [81];
-printf("Введите строку до 80 символов: ");
-
+    int i = 0;
+    while(str[i] != '\0')
+    {
+        i++;
+    }
+    
     return 0;
 }
