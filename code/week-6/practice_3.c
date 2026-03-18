@@ -8,6 +8,15 @@ int main()
     int i = 0;
     while(str[i] != '\0')
     {
+    
+        if(str[i] == 'a')
+        {
+            str [i] = 'A';
+        }
+        else if(str [i] == 'b')
+        {
+            str [i] = 'B';
+        }
         i++;
     }
     
