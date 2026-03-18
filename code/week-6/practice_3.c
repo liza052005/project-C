@@ -19,6 +19,7 @@ int main()
         }
         i++;
     }
+    printf("Измененная строка: %s", str);
     
     return 0;
 }
