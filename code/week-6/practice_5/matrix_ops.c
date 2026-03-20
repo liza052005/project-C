@@ -31,8 +31,7 @@ double* matrix_operation(double *A, double *B, int n, char op)
             break;
             
         case '*':
-            // Умножение матриц сложнее
-            // Нужно: C[i][j] = сумма(A[i][k] * B[k][j]) по k от 0 до n-1
+            // Умножение матриц
             for(int i = 0; i < n; i++)
             {
                 for(int j = 0; j < n; j++)
