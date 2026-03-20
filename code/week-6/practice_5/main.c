@@ -49,7 +49,29 @@ int main()
     printf("\nВведите операцию (+, -, *): ");
     scanf(" %c", &op);
     
-    // Здесь будем вызывать функцию
+    // Вызываем функцию для выполнения операции
+result = matrix_operation(A, B, n, op);
+
+if(result != NULL)
+{
+    // Вывод результата
+    printf("\nРезультат операции %c:\n", op);
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = 0; j < n; j++)
+        {
+            printf("%.2f\t", result[i*n + j]);
+        }
+        printf("\n");
+    }
+    
+    // Освобождаем память
+    free(result);
+}
+
+// Освобождаем память матриц A и B
+free(A);
+free(B);
     
     return 0;
 }
