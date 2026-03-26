@@ -43,5 +43,14 @@
     }
     
     printf("\n=== КОПИРОВАНИЕ ВЫПОЛНЕНО ===\n");
+        printf("\n=== ОТСОРТИРОВАННЫЕ ДАННЫЕ (по году рождения) ===\n");
+    for(i = 0; i < 4; i++)
+    {
+        printf("%d. %s %s, %d г.\n", 
+               i + 1, 
+               arr2[i].name, 
+               arr2[i].surname, 
+               arr2[i].year);
+    }
         return 0;
     }
