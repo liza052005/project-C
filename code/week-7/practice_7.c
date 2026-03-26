@@ -26,5 +26,14 @@
             printf("Введите год рождения: ");
             scanf("%d", &arr1[i].year);
         }
+         printf("\n=== ВВЕДЕННЫЕ ДАННЫЕ ===\n");
+    for(i = 0; i < 4; i++)
+    {
+        printf("%d. %s %s, %d г.\n", 
+               i + 1, 
+               arr1[i].name, 
+               arr1[i].surname, 
+               arr1[i].year);
+    }
         return 0;
     }
