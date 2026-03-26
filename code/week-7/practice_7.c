@@ -35,5 +35,13 @@
                arr1[i].surname, 
                arr1[i].year);
     }
+      for(i = 0; i < 4; i++)
+    {
+        strcpy(arr2[i].name, arr1[i].name);
+        strcpy(arr2[i].surname, arr1[i].surname);
+        arr2[i].year = arr1[i].year;
+    }
+    
+    printf("\n=== КОПИРОВАНИЕ ВЫПОЛНЕНО ===\n");
         return 0;
     }
