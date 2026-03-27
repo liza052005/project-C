@@ -56,11 +56,9 @@ int compare(void* context, const void* a, const void* b) {
 			comp_result = strcmp(fullname1, fullname2);
 		}
 		else if (strcmp(sort_field, "gender") == 0) {
-			// ���������� �� ���� (��������, 'M' < 'W')
 			comp_result = p1->gender - p2->gender;
 		}
 		else if (strcmp(sort_field, "height") == 0) {
-			// ���������� �� ����� (�� �������� � ��������)
 			if (p1->height < p2->height)
 				comp_result = -1;
 			else if (p1->height > p2->height)
@@ -69,15 +67,12 @@ int compare(void* context, const void* a, const void* b) {
 				comp_result = 0;
 		}
 
-		// ���� �� �������� ���� ������ ����������, ���������� ��������� ���������
 		if (comp_result != 0)
 			return comp_result;
 	}
-	// ���� ��� �������� �� ������� ��������, ���������� 0
 	return 0;
 }
 
-// ����������
 void sort_people(Person people[], int count, SortCriteria* criteria) {
 
 
@@ -85,7 +80,7 @@ void sort_people(Person people[], int count, SortCriteria* criteria) {
 }
 
 int main() {
-	// ������ ����
+
 	FILE* file = fopen("people.txt", "r");
 	if (!file) {
 		printf("Unable to read file!\n");
@@ -102,18 +97,16 @@ int main() {
 	}
 	fclose(file);
 
-	// �������� � ������ ��������� �����
 	SortCriteria criteria;
 	criteria.count = 0;
 
 	printf("Enter field for sort (year, name, gender, height), using [' '] SPACE: ");
-	char input[30]; // ������ �����
+	char input[30]; 
 	fgets(input, sizeof(input), stdin);
 
-	//// �������� ������� ����� ������ � ���������� \0
+
 	input[strcspn(input, "\n")] = '\0';
 
-	// ���� �� ������ ��������� ����������, �� ������� ��������������� ������
 	if (strcmp(input, "") == 0)
 	{
 		printf("[No sorting parameters provided. Printing default array]:\n");
@@ -121,9 +114,7 @@ int main() {
 		exit(1);
 	}
 
-	// ��������� ������ �� ����������� �������
 	char* token = strtok(input, " ");
-	// ���� ��������� ��������� max = 4
 	while (token && criteria.count < 4) {
 		if (criteria.count > 4)
 		{
@@ -132,18 +123,15 @@ int main() {
 		}
 		else
 		{
-			// �������� ������� ����� ������ � ���������� \0
 			token[strcspn(token, "\n")] = '\0';
 			strcpy(criteria.fields[criteria.count++], token);
-			// ���������� � default
+			
 			token = strtok(NULL, " ");
 		}
 	}
 
-	// ���������� ������� �������� �� �������� ���������
 	sort_people(people, count, &criteria);
 
-	// ����� ��������������� ������
 	printf("Sorted data:\n");
 	print_people(people, count);
 
