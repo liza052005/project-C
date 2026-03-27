@@ -1,129 +1,166 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
 
-#define MAX_PEOPLE 10
+struct Person {
+    char name[50];
+    char surname[50];
+    int year;
+    char gender;
+    float height;
+};
 
-typedef struct {
-	char first_name[30];
-	char last_name[30];
-	int birth_year;
-	char gender;
-	double height;
-} Person;
-
-typedef struct {
-	char fields[4][20];
-	int count;
-} SortCriteria;
-
-void print_people(Person people[], int count) {
-	for (int i = 0; i < count; i++) {
-		printf("%s %s, %d, %c, %.2lf\n",
-			people[i].first_name, people[i].last_name,
-			people[i].birth_year, people[i].gender,
-			people[i].height);
-	}
+// Функция чтения данных из файла
+int read_data(struct Person persons[], int max_count)
+{
+    FILE *file;
+    int count = 0;
+    
+    file = fopen("people2.txt", "r");
+    if(file == NULL)
+    {
+        printf("Ошибка: файл people2.txt не найден!\n");
+        return 0;
+    }
+    
+    while(fscanf(file, "%s %s %d %c %f", 
+                 persons[count].surname,
+                 persons[count].name,
+                 &persons[count].year,
+                 &persons[count].gender,
+                 &persons[count].height) == 5)
+    {
+        count++;
+        if(count >= max_count) break;
+    }
+    
+    fclose(file);
+    return count;
 }
 
-int compare(void* context, const void* a, const void* b) {
-	Person* p1 = (Person*)a;
-	Person* p2 = (Person*)b;
-	SortCriteria* criteria = (SortCriteria*)context;
-
-	for (int i = 0; i < criteria->count; i++) {
-		char* sort_field = criteria->fields[i];
-		int comp_result = 0;
-
-		if (strcmp(sort_field, "year") == 0) {
-			comp_result = p1->birth_year - p2->birth_year;
-		}
-		else if (strcmp(sort_field, "name") == 0) {
-			char fullname1[31], fullname2[31];
-			snprintf(fullname1, sizeof(fullname1), "%s %s", p1->first_name, p1->last_name);
-			snprintf(fullname2, sizeof(fullname2), "%s %s", p2->first_name, p2->last_name);
-			comp_result = strcmp(fullname1, fullname2);
-		}
-		else if (strcmp(sort_field, "gender") == 0) {
-			comp_result = p1->gender - p2->gender;
-		}
-		else if (strcmp(sort_field, "height") == 0) {
-			if (p1->height < p2->height)
-				comp_result = -1;
-			else if (p1->height > p2->height)
-				comp_result = 1;
-			else
-				comp_result = 0;
-		}
-
-		if (comp_result != 0)
-			return comp_result;
-	}
-	return 0;
+// Функции сравнения
+int compare_by_year(struct Person a, struct Person b)
+{
+    return a.year - b.year;
 }
 
-void sort_people(Person people[], int count, SortCriteria* criteria) {
-
-
-	qsort_s(people, count, sizeof(Person), compare, criteria);
+int compare_by_surname(struct Person a, struct Person b)
+{
+    return strcmp(a.surname, b.surname);
 }
 
-int main() {
+int compare_by_name(struct Person a, struct Person b)
+{
+    return strcmp(a.name, b.name);
+}
 
-	FILE* file = fopen("people.txt", "r");
-	if (!file) {
-		printf("Unable to read file!\n");
-		exit(1);
-	}
+int compare_by_gender(struct Person a, struct Person b)
+{
+    return a.gender - b.gender;
+}
 
-	Person people[MAX_PEOPLE];
-	int count = 0;
-	while (fscanf(file, "%s %s %d %c %lf",
-		people[count].first_name, people[count].last_name,
-		&people[count].birth_year, &people[count].gender,
-		&people[count].height) == 5) {
-		count++;
-	}
-	fclose(file);
+int compare_by_height(struct Person a, struct Person b)
+{
+    if(a.height > b.height) return 1;
+    if(a.height < b.height) return -1;
+    return 0;
+}
 
-	SortCriteria criteria;
-	criteria.count = 0;
+// Универсальная сортировка
+void sort_persons(struct Person persons[], int count, 
+                  int (*compare)(struct Person, struct Person))
+{
+    for(int i = 0; i < count - 1; i++)
+    {
+        for(int j = 0; j < count - 1 - i; j++)
+        {
+            if(compare(persons[j], persons[j+1]) > 0)
+            {
+                struct Person temp = persons[j];
+                persons[j] = persons[j+1];
+                persons[j+1] = temp;
+            }
+        }
+    }
+}
 
-	printf("Enter field for sort (year, name, gender, height), using [' '] SPACE: ");
-	char input[30]; 
-	fgets(input, sizeof(input), stdin);
+// Вывод данных
+void print_persons(struct Person persons[], int count)
+{
+    printf("\n%-15s %-15s %6s %6s %8s\n", 
+           "Фамилия", "Имя", "Год", "Пол", "Рост(м)");
+    printf("--------------------------------------------------------\n");
+    
+    for(int i = 0; i < count; i++)
+    {
+        printf("%-15s %-15s %6d %6c %8.2f\n", 
+               persons[i].surname,
+               persons[i].name,
+               persons[i].year,
+               persons[i].gender,
+               persons[i].height);
+    }
+}
 
-
-	input[strcspn(input, "\n")] = '\0';
-
-	if (strcmp(input, "") == 0)
-	{
-		printf("[No sorting parameters provided. Printing default array]:\n");
-		print_people(people, count);
-		exit(1);
-	}
-
-	char* token = strtok(input, " ");
-	while (token && criteria.count < 4) {
-		if (criteria.count > 4)
-		{
-			printf("Too lot criteries! [%d]\n", criteria.count);
-			exit(1);
-		}
-		else
-		{
-			token[strcspn(token, "\n")] = '\0';
-			strcpy(criteria.fields[criteria.count++], token);
-			
-			token = strtok(NULL, " ");
-		}
-	}
-
-	sort_people(people, count, &criteria);
-
-	printf("Sorted data:\n");
-	print_people(people, count);
-
-	return 0;
+int main()
+{
+    struct Person persons[100];
+    int count;
+    int choice;
+    
+    count = read_data(persons, 100);
+    if(count == 0)
+    {
+        printf("Нет данных для обработки!\n");
+        return 1;
+    }
+    
+    printf("Загружено %d записей\n", count);
+    print_persons(persons, count);
+    
+    while(1)
+    {
+        printf("\n=== СОРТИРОВКА ===\n");
+        printf("1. По году рождения\n");
+        printf("2. По фамилии\n");
+        printf("3. По имени\n");
+        printf("4. По полу\n");
+        printf("5. По росту\n");
+        printf("6. Выход\n");
+        printf("Выбор: ");
+        scanf("%d", &choice);
+        
+        struct Person sorted[100];
+        for(int i = 0; i < count; i++)
+            sorted[i] = persons[i];
+        
+        switch(choice)
+        {
+            case 1:
+                sort_persons(sorted, count, compare_by_year);
+                print_persons(sorted, count);
+                break;
+            case 2:
+                sort_persons(sorted, count, compare_by_surname);
+                print_persons(sorted, count);
+                break;
+            case 3:
+                sort_persons(sorted, count, compare_by_name);
+                print_persons(sorted, count);
+                break;
+            case 4:
+                sort_persons(sorted, count, compare_by_gender);
+                print_persons(sorted, count);
+                break;
+            case 5:
+                sort_persons(sorted, count, compare_by_height);
+                print_persons(sorted, count);
+                break;
+            case 6:
+                printf("До свидания!\n");
+                return 0;
+            default:
+                printf("Неверный выбор!\n");
+        }
+    }
 }
