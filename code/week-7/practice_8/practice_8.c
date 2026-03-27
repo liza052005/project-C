@@ -5,7 +5,6 @@
 
 #define MAX_PEOPLE 10
 
-// �������
 typedef struct {
 	char first_name[30];
 	char last_name[30];
@@ -14,13 +13,11 @@ typedef struct {
 	double height;
 } Person;
 
-// ��������
 typedef struct {
 	char fields[4][20];
 	int count;
 } SortCriteria;
 
-// ����� �����
 void print_people(Person people[], int count) {
 	for (int i = 0; i < count; i++) {
 		printf("%s %s, %d, %c, %.2lf\n",
@@ -31,25 +28,18 @@ void print_people(Person people[], int count) {
 }
 
 int compare(void* context, const void* a, const void* b) {
-	// �������� � ���� Person
 	Person* p1 = (Person*)a;
 	Person* p2 = (Person*)b;
-	// �������� � ���� SortCriteria
 	SortCriteria* criteria = (SortCriteria*)context;
 
-	// ���������� �������� ���������� � ������� ����������
 	for (int i = 0; i < criteria->count; i++) {
-		// �������� �������� ����������
 		char* sort_field = criteria->fields[i];
-		// ��������� ��������� ���������
 		int comp_result = 0;
 
 		if (strcmp(sort_field, "year") == 0) {
-			// ���������� �� ���� �������� (�� �������� � ��������)
 			comp_result = p1->birth_year - p2->birth_year;
 		}
 		else if (strcmp(sort_field, "name") == 0) {
-			// ���������� �� �����
 			char fullname1[31], fullname2[31];
 			snprintf(fullname1, sizeof(fullname1), "%s %s", p1->first_name, p1->last_name);
 			snprintf(fullname2, sizeof(fullname2), "%s %s", p2->first_name, p2->last_name);
