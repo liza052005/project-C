@@ -16,7 +16,7 @@ int read_data(struct Person persons[], int max_count)
     FILE *file;
     int count = 0;
     
-    file = fopen("people2.txt", "r");
+    file = fopen("people.txt", "r");
     if(file == NULL)
     {
         printf("Ошибка: файл people2.txt не найден!\n");
