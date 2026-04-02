@@ -18,27 +18,29 @@ int main()
     double numbers[100];
     int count = 0;
     char *token;
+    double max_value;
     
     printf("Введите числа через пробел: ");
     fgets(input, sizeof(input), stdin);
     
-    // Убираем символ новой строки
     input[strcspn(input, "\n")] = 0;
     
-    // Разбиваем строку по пробелам
+    // Парсим числа
     token = strtok(input, " ");
-    
     while(token != NULL)
     {
-        // Преобразуем строку в число
         numbers[count] = atof(token);
         count++;
         token = strtok(NULL, " ");
     }
     
-    printf("Введено чисел: %d\n", count);
+    if(count == 0)
+    {
+        printf("Нет чисел для обработки!\n");
+        return 1;
+    }
     
-    // Выводим все числа
+    printf("Введено чисел: %d\n", count);
     printf("Числа: ");
     for(int i = 0; i < count; i++)
     {
@@ -46,7 +48,10 @@ int main()
     }
     printf("\n");
     
-    // Здесь будем использовать макрос
+    // Используем МАКРОС для поиска максимума
+    max_value = MAX_IN_ARRAY(numbers, count);
+    
+    printf("Максимальное число: %.2f\n", max_value);
     
     return 0;
 }
