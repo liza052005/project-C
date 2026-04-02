@@ -3,7 +3,14 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-// Здесь будем объявлять макрос
+// Макрос для поиска максимального числа в массиве
+#define MAX_IN_ARRAY(arr, n) ({ \
+    double max = (arr)[0]; \
+    for(int i = 1; i < (n); i++) { \
+        if((arr)[i] > max) max = (arr)[i]; \
+    } \
+    max; \
+})
 
 int main()
 {
