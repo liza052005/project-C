@@ -23,9 +23,10 @@ int main()
     printf("Введите числа через пробел: ");
     fgets(input, sizeof(input), stdin);
     
+    // Убираем символ новой строки
     input[strcspn(input, "\n")] = 0;
     
-    // Парсим числа
+    // Разбиваем строку по пробелам и заполняем массив
     token = strtok(input, " ");
     while(token != NULL)
     {
@@ -34,24 +35,25 @@ int main()
         token = strtok(NULL, " ");
     }
     
+    // Проверка, что есть числа
     if(count == 0)
     {
-        printf("Нет чисел для обработки!\n");
+        printf("Ошибка: не введено ни одного числа!\n");
         return 1;
     }
     
-    printf("Введено чисел: %d\n", count);
-    printf("Числа: ");
+    // Выводим все числа
+    printf("\nВведенные числа: ");
     for(int i = 0; i < count; i++)
     {
         printf("%.2f ", numbers[i]);
     }
     printf("\n");
     
-    // Используем МАКРОС для поиска максимума
+    // Используем макрос для поиска максимума
     max_value = MAX_IN_ARRAY(numbers, count);
     
-    printf("Максимальное число: %.2f\n", max_value);
+    printf("\nМаксимальное число: %.2f\n", max_value);
     
     return 0;
 }
