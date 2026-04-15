@@ -110,24 +110,18 @@ int main()
 }
 
 #include <stdio.h>
-
-// Структура для даты
 struct Date {
     int day;
     int month;
     int year;
 };
-
-// Структура для студента с датой рождения
 struct Student {
     char name[50];
-    struct Date birthday;  // структура внутри структуры
+    struct Date birthday; 
 };
-
 int main()
 {
     struct Student s;
-    
     printf("Имя студента: ");
     scanf("%s", s.name);
     printf("Дата рождения (день месяц год): ");
