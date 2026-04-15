@@ -130,49 +130,33 @@ int main()
     
     printf("Имя студента: ");
     scanf("%s", s.name);
-    
     printf("Дата рождения (день месяц год): ");
     scanf("%d %d %d", &s.birthday.day, 
                       &s.birthday.month, 
                       &s.birthday.year);
-    
     printf("\nСтудент: %s\n", s.name);
     printf("Родился: %02d.%02d.%d\n", 
            s.birthday.day, 
            s.birthday.month, 
            s.birthday.year);
-    
     return 0;
 }
-
-
 #include <stdio.h>
-
 struct Point {
     int x;
     int y;
 };
-
 int main()
 {
     struct Point dot = {10, 20};
-    struct Point *ptr;  // указатель на структуру
-    
-    ptr = &dot;  // ptr указывает на dot
-    
-    // Доступ к полям через указатель
+    struct Point *ptr; 
+    ptr = &dot;
     printf("Через точку: x=%d, y=%d\n", dot.x, dot.y);
     printf("Через указатель: x=%d, y=%d\n", (*ptr).x, (*ptr).y);
-    
-    // Более удобный способ ->
     printf("Через стрелку: x=%d, y=%d\n", ptr->x, ptr->y);
-    
-    // Изменение через указатель
     ptr->x = 100;
     ptr->y = 200;
-    
     printf("\nПосле изменения:\n");
     printf("x=%d, y=%d\n", dot.x, dot.y);
-    
     return 0;
 }
