@@ -86,10 +86,8 @@ struct Student {
 
 int main()
 {
-    struct Student class[3];  // массив из 3 студентов
+    struct Student class[3];
     int i;
-    
-    // Ввод данных для каждого студента
     for(i = 0; i < 3; i++)
     {
         printf("\nСтудент %d:\n", i+1);
@@ -98,17 +96,13 @@ int main()
         printf("Возраст: ");
         scanf("%d", &class[i].age);
     }
-    
-    // Вывод всех студентов
     printf("\n=== ВСЕ СТУДЕНТЫ ===\n");
     for(i = 0; i < 3; i++)
     {
         printf("%d. %s, %d лет\n", i+1, class[i].name, class[i].age);
     }
-    
     return 0;
 }
-
 #include <stdio.h>
 struct Date {
     int day;
