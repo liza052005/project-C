@@ -18,32 +18,24 @@ int main()
     
     printf("Введите возраст: ");
     scanf("%d", &student1.age);
-    
     printf("Введите оценку: ");
     scanf("%f", &student1.grade);
-    
-    // Вывод данных
     printf("\nДанные студента:\n");
     printf("Имя: %s\n", student1.name);
     printf("Возраст: %d\n", student1.age);
     printf("Оценка: %.1f\n", student1.grade);
-    
     return 0;
 }
 #include <stdio.h>
-
 struct Book {
     char title[100];
     char author[50];
     int year;
     float price;
 };
-
 int main()
 {
     struct Book book1, book2;
-    
-    // Заполняем первую книгу
     printf("=== КНИГА 1 ===\n");
     printf("Название: ");
     scanf("%s", book1.title);
@@ -53,8 +45,6 @@ int main()
     scanf("%d", &book1.year);
     printf("Цена: ");
     scanf("%f", &book1.price);
-    
-    // Заполняем вторую книгу
     printf("\n=== КНИГА 2 ===\n");
     printf("Название: ");
     scanf("%s", book2.title);
@@ -64,8 +54,6 @@ int main()
     scanf("%d", &book2.year);
     printf("Цена: ");
     scanf("%f", &book2.price);
-    
-    // Сравнение цен
     printf("\n=== СРАВНЕНИЕ ===\n");
     if(book1.price > book2.price)
         printf("Книга '%s' дороже\n", book1.title);
@@ -73,17 +61,13 @@ int main()
         printf("Книга '%s' дороже\n", book2.title);
     else
         printf("Книги стоят одинаково\n");
-    
     return 0;
 }
-
 #include <stdio.h>
-
 struct Student {
     char name[50];
     int age;
 };
-
 int main()
 {
     struct Student class[3];
