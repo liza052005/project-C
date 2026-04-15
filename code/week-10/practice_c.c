@@ -1,21 +1,14 @@
 #include <stdio.h>
-
-// Объявление структуры
 struct Student {
     char name[50];
     int age;
     float grade;
 };
-
 int main()
 {
-    // Создание переменной типа struct Student
     struct Student student1;
-    
-    // Заполнение полей структуры
     printf("Введите имя студента: ");
     scanf("%s", student1.name);
-    
     printf("Введите возраст: ");
     scanf("%d", &student1.age);
     printf("Введите оценку: ");
