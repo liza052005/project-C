@@ -134,8 +134,6 @@ int main() {
     scanf("%s", name);
     printf("Введите ваш возраст: ");
     scanf("%d", &age);
-
     printf("Привет, %s! Тебе %d лет.\n", name, age);
-
     return 0;
 }
