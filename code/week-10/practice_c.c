@@ -125,3 +125,5 @@ int main()
     printf("x=%d, y=%d\n", dot.x, dot.y);
     return 0;
 }
+
+ЫВОЫО
