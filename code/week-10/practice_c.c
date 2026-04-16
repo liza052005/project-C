@@ -137,3 +137,30 @@ int main() {
     printf("Привет, %s! Тебе %d лет.\n", name, age);
     return 0;
 }
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int secret, guess, attempts = 0;
+    
+    srand(time(0));
+    secret = rand() % 100 + 1; // число от 1 до 100
+    
+    printf("Я загадал число от 1 до 100. Угадай!\n");
+    
+    do {
+        printf("Твоё предположение: ");
+        scanf("%d", &guess);
+        attempts++;
+        
+        if (guess > secret)
+            printf("Меньше!\n");
+        else if (guess < secret)
+            printf("Больше!\n");
+        else
+            printf("Поздравляю! Ты угадал с %d попытки!\n", attempts);
+    } while (guess != secret);
+    
+    return 0;
+}
