@@ -130,10 +130,8 @@ int main()
 int main() {
     char name[50];
     int age;
-
     printf("Введите ваше имя: ");
     scanf("%s", name);
-
     printf("Введите ваш возраст: ");
     scanf("%d", &age);
 
