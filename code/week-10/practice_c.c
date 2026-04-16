@@ -126,4 +126,18 @@ int main()
     return 0;
 }
 
-ЫВОЫО
+#include <stdio.h>
+int main() {
+    char name[50];
+    int age;
+
+    printf("Введите ваше имя: ");
+    scanf("%s", name);
+
+    printf("Введите ваш возраст: ");
+    scanf("%d", &age);
+
+    printf("Привет, %s! Тебе %d лет.\n", name, age);
+
+    return 0;
+}
