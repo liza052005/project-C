@@ -149,3 +149,18 @@ int main() {
     
     printf("Я загадал число от 1 до 100. Угадай!\n");
     
+    do {
+        printf("Твоё предположение: ");
+        scanf("%d", &guess);
+        attempts++;
+        
+        if (guess > secret)
+            printf("Меньше!\n");
+        else if (guess < secret)
+            printf("Больше!\n");
+        else
+            printf("Поздравляю! Ты угадал с %d попытки!\n", attempts);
+    } while (guess != secret);
+    
+    return 0;
+}
