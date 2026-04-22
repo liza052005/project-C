@@ -219,3 +219,26 @@ void books_after_year(struct Book books[], int count)
     if(!found)
         printf("Книги не найдены.\n");
 }
+void thickest_book(struct Book books[], int count)
+{
+    if(count == 0)
+    {
+        printf("Библиотека пуста!\n");
+        return;
+    }
+    
+    int max_index = 0;
+    
+    for(int i = 1; i < count; i++)
+    {
+        if(books[i].pages > books[max_index].pages)
+            max_index = i;
+    }
+    
+    printf("\n=== САМАЯ ТОЛСТАЯ КНИГА ===\n");
+    printf("Название: %s\n", books[max_index].title);
+    printf("Автор: %s\n", books[max_index].author);
+    printf("Год: %d\n", books[max_index].year);
+    printf("Страниц: %d\n", books[max_index].pages);
+    printf("Цена: %.2f руб.\n", books[max_index].price);
+}
