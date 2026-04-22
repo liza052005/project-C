@@ -52,3 +52,34 @@ int main()
     } while(choice != 8);
     return 0;
 }
+void add_book(struct Book books[], int *count)
+{
+    if(*count >= MAX_BOOKS)
+    {
+        printf("Библиотека переполнена!\n");
+        return;
+    }
+    
+    printf("\n=== ДОБАВЛЕНИЕ КНИГИ ===\n");
+    
+    printf("Название: ");
+    fgets(books[*count].title, sizeof(books[*count].title), stdin);
+    books[*count].title[strcspn(books[*count].title, "\n")] = 0;
+    
+    printf("Автор: ");
+    fgets(books[*count].author, sizeof(books[*count].author), stdin);
+    books[*count].author[strcspn(books[*count].author, "\n")] = 0;
+    
+    printf("Год издания: ");
+    scanf("%d", &books[*count].year);
+    
+    printf("Количество страниц: ");
+    scanf("%d", &books[*count].pages);
+    
+    printf("Цена: ");
+    scanf("%f", &books[*count].price);
+    getchar(); // очистка буфера
+    
+    (*count)++;
+    printf("Книга добавлена!\n");
+}
