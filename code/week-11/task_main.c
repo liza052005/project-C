@@ -193,3 +193,29 @@ void delete_book(struct Book books[], int *count)
     (*count)--;
     printf("Книга удалена!\n");
 }
+void books_after_year(struct Book books[], int count)
+{
+    int year;
+    int found = 0;
+    
+    printf("Введите год: ");
+    scanf("%d", &year);
+    getchar();
+    
+    printf("\n=== КНИГИ ИЗДАННЫЕ ПОСЛЕ %d ГОДА ===\n", year);
+    
+    for(int i = 0; i < count; i++)
+    {
+        if(books[i].year > year)
+        {
+            printf("%s - %s (%d г.)\n",
+                   books[i].title,
+                   books[i].author,
+                   books[i].year);
+            found = 1;
+        }
+    }
+    
+    if(!found)
+        printf("Книги не найдены.\n");
+}
