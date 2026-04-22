@@ -134,3 +134,29 @@ void search_by_author(struct Book books[], int count)
     if(!found)
         printf("Книги этого автора не найдены.\n");
 }
+void search_by_title(struct Book books[], int count)
+{
+    char title[100];
+    int found = 0;
+    
+    printf("Введите название (или часть): ");
+    fgets(title, sizeof(title), stdin);
+    title[strcspn(title, "\n")] = 0;
+    
+    printf("\n=== РЕЗУЛЬТАТЫ ПОИСКА ===\n");
+    
+    for(int i = 0; i < count; i++)
+    {
+        if(strstr(books[i].title, title) != NULL)
+        {
+            printf("%s - %s (%d г.)\n",
+                   books[i].title,
+                   books[i].author,
+                   books[i].year);
+            found = 1;
+        }
+    }
+    
+    if(!found)
+        printf("Книги не найдены.\n");
+}
