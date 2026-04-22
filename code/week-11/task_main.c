@@ -107,3 +107,30 @@ void show_all_books(struct Book books[], int count)
                books[i].price);
     }
 }
+void search_by_author(struct Book books[], int count)
+{
+    char author[50];
+    int found = 0;
+    
+    printf("Введите имя автора: ");
+    fgets(author, sizeof(author), stdin);
+    author[strcspn(author, "\n")] = 0;
+    
+    printf("\n=== КНИГИ АВТОРА '%s' ===\n", author);
+    
+    for(int i = 0; i < count; i++)
+    {
+        if(strstr(books[i].author, author) != NULL)
+        {
+            printf("%s (%d г.) - %d стр., %.2f руб.\n",
+                   books[i].title,
+                   books[i].year,
+                   books[i].pages,
+                   books[i].price);
+            found = 1;
+        }
+    }
+    
+    if(!found)
+        printf("Книги этого автора не найдены.\n");
+}
