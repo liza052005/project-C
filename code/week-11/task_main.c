@@ -83,3 +83,27 @@ void add_book(struct Book books[], int *count)
     (*count)++;
     printf("Книга добавлена!\n");
 }
+void show_all_books(struct Book books[], int count)
+{
+    if(count == 0)
+    {
+        printf("Библиотека пуста!\n");
+        return;
+    }
+    
+    printf("\n=== ВСЕ КНИГИ ===\n");
+    printf("%-3s %-30s %-20s %-6s %-8s %-8s\n", 
+           "№", "Название", "Автор", "Год", "Стр.", "Цена");
+    printf("----------------------------------------------------------------\n");
+    
+    for(int i = 0; i < count; i++)
+    {
+        printf("%-3d %-30s %-20s %-6d %-8d %-8.2f\n",
+               i + 1,
+               books[i].title,
+               books[i].author,
+               books[i].year,
+               books[i].pages,
+               books[i].price);
+    }
+}
