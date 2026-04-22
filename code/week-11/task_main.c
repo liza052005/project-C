@@ -160,3 +160,36 @@ void search_by_title(struct Book books[], int count)
     if(!found)
         printf("Книги не найдены.\n");
 }
+void delete_book(struct Book books[], int *count)
+{
+    char title[100];
+    int index = -1;
+    
+    printf("Введите название книги для удаления: ");
+    fgets(title, sizeof(title), stdin);
+    title[strcspn(title, "\n")] = 0;
+    
+    for(int i = 0; i < *count; i++)
+    {
+        if(strcmp(books[i].title, title) == 0)
+        {
+            index = i;
+            break;
+        }
+    }
+    
+    if(index == -1)
+    {
+        printf("Книга не найдена!\n");
+        return;
+    }
+    
+    // Сдвигаем элементы влево
+    for(int i = index; i < *count - 1; i++)
+    {
+        books[i] = books[i + 1];
+    }
+    
+    (*count)--;
+    printf("Книга удалена!\n");
+}
