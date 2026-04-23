@@ -40,3 +40,27 @@ int main() {
     }
     return 0;
 }
+#include <stdio.h>
+
+int countTall(int arr[], int n, int limit) {
+    int count = 0;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > limit) {
+            count++;
+        }
+    }
+    return count;
+}
+
+int main() {
+    int buildings[] = {5, 12, 8, 15, 3, 10, 18};
+    int limit;
+    
+    printf("Введите минимальное количество этажей: ");
+    scanf("%d", &limit);
+    
+    int result = countTall(buildings, 7, limit);
+    printf("Зданий выше %d этажей: %d\n", limit, result);
+    
+    return 0;
+}
