@@ -64,3 +64,28 @@ int main() {
     
     return 0;
 }
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void printAbove(int arr[], int n, int minFloors) {
+    printf("Здания выше %d этажей:\n", minFloors);
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > minFloors) {
+            printf("Здание %d: %d этажей\n", i+1, arr[i]);
+        }
+    }
+}
+
+int main() {
+    srand(time(0));
+    int buildings[6];
+    
+    for (int i = 0; i < 6; i++) {
+        buildings[i] = rand() % 15 + 2; // от 2 до 16
+    }
+    
+    printAbove(buildings, 6, 8);
+    
+    return 0;
+}
