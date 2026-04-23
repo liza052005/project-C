@@ -80,12 +80,29 @@ void printAbove(int arr[], int n, int minFloors) {
 int main() {
     srand(time(0));
     int buildings[6];
-    
     for (int i = 0; i < 6; i++) {
         buildings[i] = rand() % 15 + 2; // от 2 до 16
     }
-    
     printAbove(buildings, 6, 8);
+    return 0;
+}
+#include <stdio.h>
+
+int findMax(int arr[], int n) {
+    int max = arr[0];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+int main() {
+    int buildings[] = {6, 14, 9, 20, 5, 12};
+    int maxFloors = findMax(buildings, 6);
+    
+    printf("Самое высокое здание имеет %d этажей\n", maxFloors);
     
     return 0;
 }
