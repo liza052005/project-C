@@ -9,12 +9,8 @@ int main() {
         int d = (num / 100) % 10;    
         int e = (num / 10) % 10;   
         int f = num % 10;     
-        
-        // Сумма первых трёх и последних трёх цифр
         int sum1 = a + b + c;
         int sum2 = d + e + f;
-        
-        // Если суммы равны - билет счастливый
         if (sum1 == sum2) {
             count++;
         }
