@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    int count = 0;  // счетчик счастливых билетов
+    int count = 0;
     
     // Перебираем все возможные номера от 0 до 999999
     for (int num = 0; num <= 999999; num++) {
