@@ -43,6 +43,5 @@ int main() {
     // Проверка, что количество отличников не изменилось
     excellentCount = countExcellent(grades, size);
     printf("Количество отличников после сортировки: %d\n", excellentCount);
-
     return 0;
 }
