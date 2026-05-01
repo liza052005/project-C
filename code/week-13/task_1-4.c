@@ -76,3 +76,26 @@ void main()
         printf("\n");
     }
 }
+// таск 3 - замена симвволов на заглавные
+
+#include <stdio.h>
+#include <string.h>
+
+void main()
+{
+    char s[81];
+    int i;
+    
+    printf("Введите строку до 80 символов:\n");
+    gets(s);
+    
+    for (i = 0; i < strlen(s); i++)
+    {
+        if (s[i] == 'a' || s[i] == 'b')
+        {
+            s[i] = s[i]-32;
+        }
+    }
+    
+    printf("Result: %s\n", s);
+}
