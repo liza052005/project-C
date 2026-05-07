@@ -143,3 +143,45 @@ void main()
     fclose(f2);
     printf("Done\n");
 }
+#include <stdio.h>
+#include <string.h>
+
+struct humen
+{
+    char name[50];
+    char surname[50];
+    int year;
+};
+
+void main()
+{
+    struct humen arr1[4], arr2[4];
+    struct humen temp;
+    int i, j;
+    
+    printf("Input 4 persons (name, surname, year):\n");
+    for (i = 0; i < 4; i++)
+    {
+        scanf("%s %s %d", arr1[i].name, arr1[i].surname, &arr1[i].year);
+        arr2[i] = arr1[i];
+    }
+    
+    for (i = 0; i < 3; i++)
+    {
+        for (j = i + 1; j < 4; j++)
+        {
+            if (arr2[i].year > arr2[j].year)
+            {
+                temp = arr2[i];
+                arr2[i] = arr2[j];
+                arr2[j] = temp;
+            }
+        }
+    }
+    
+    printf("Sorted by year:\n");
+    for (i = 0; i < 4; i++)
+    {
+        printf("%s %s %d\n", arr2[i].name, arr2[i].surname, arr2[i].year);
+    }
+}
