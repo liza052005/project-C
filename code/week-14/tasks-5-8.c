@@ -185,3 +185,81 @@ void main()
         printf("%s %s %d\n", arr2[i].name, arr2[i].surname, arr2[i].year);
     }
 }
+#include <stdio.h>
+#include <string.h>
+
+struct human
+{
+    char surname[50];
+    char name[50];
+    int year;
+    char gender;
+    double height;
+};
+
+void main()
+{
+    struct human persons[100];
+    int n = 0, i, j, choice;
+    char line[200];
+    struct human temp;
+    FILE *f;
+    
+    f = fopen("persons.txt", "rt");
+    if (f == NULL)
+    {
+        printf("Error opening file\n");
+        return;
+    }
+    
+    while (fgets(line, 200, f) != NULL && n < 100)
+    {
+        sscanf(line, "%s %s %d %c %lf",
+               persons[n].surname, persons[n].name,
+               &persons[n].year, &persons[n].gender, &persons[n].height);
+        n++;
+    }
+    fclose(f);
+    
+    printf("Sort by:\n");
+    printf("1 - year\n");
+    printf("2 - name\n");
+    printf("3 - surname\n");
+    printf("4 - gender\n");
+    printf("5 - height\n");
+    printf("Input number: ");
+    scanf("%d", &choice);
+    
+    for (i = 0; i < n - 1; i++)
+    {
+        for (j = i + 1; j < n; j++)
+        {
+            int cmp = 0;
+            switch (choice)
+            {
+                case 1: cmp = persons[i].year - persons[j].year; break;
+                case 2: cmp = strcmp(persons[i].name, persons[j].name); break;
+                case 3: cmp = strcmp(persons[i].surname, persons[j].surname); break;
+                case 4: cmp = persons[i].gender - persons[j].gender; break;
+                case 5: if (persons[i].height > persons[j].height) cmp = 1;
+                        else if (persons[i].height < persons[j].height) cmp = -1;
+                        else cmp = 0;
+                        break;
+            }
+            if (cmp > 0)
+            {
+                temp = persons[i];
+                persons[i] = persons[j];
+                persons[j] = temp;
+            }
+        }
+    }
+    
+    printf("\nSorted result:\n");
+    for (i = 0; i < n; i++)
+    {
+        printf("%s %s %d %c %.2lf\n",
+               persons[i].surname, persons[i].name,
+               persons[i].year, persons[i].gender, persons[i].height);
+    }
+}
