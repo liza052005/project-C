@@ -2,7 +2,7 @@
 #include <math.h>
 #include <windows.h>
 
-int main()  // Исправлено: void main() -> int main()
+int main()
 {
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-
+#include <windows.h>
 struct humen{
     char name[50];
     char surname[50];
@@ -9,10 +9,11 @@ struct humen{
 
 int main()
 {
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
     struct humen arr1[4];
     struct humen arr2[4];
     int i;
-    
     printf("Введите данные о 4 людях:\n");
     for(i = 0; i < 4; i++)
     {
@@ -27,7 +28,6 @@ int main()
         printf("Введите год рождения: ");
         scanf("%d", &arr1[i].year);
     }
-    
     printf("\n=== ВВЕДЕННЫЕ ДАННЫЕ ===\n");
     for(i = 0; i < 4; i++)
     {
@@ -37,18 +37,14 @@ int main()
                arr1[i].surname, 
                arr1[i].year);
     }
-    
-    // КОПИРОВАНИЕ
     for(i = 0; i < 4; i++)
     {
         strcpy(arr2[i].name, arr1[i].name);
         strcpy(arr2[i].surname, arr1[i].surname);
         arr2[i].year = arr1[i].year;
     }
-    
     printf("\n=== КОПИРОВАНИЕ ВЫПОЛНЕНО ===\n");
-    
-    // СОРТИРОВКА (пузырьком по годам)
+
     for(i = 0; i < 3; i++)
     {
         for(int j = 0; j < 3 - i; j++)
@@ -61,8 +57,7 @@ int main()
             }
         }
     }
-    
-    // ВЫВОД ОТСОРТИРОВАННЫХ ДАННЫХ
+
     printf("\n=== ОТСОРТИРОВАННЫЕ ДАННЫЕ (по году рождения) ===\n");
     for(i = 0; i < 4; i++)
     {

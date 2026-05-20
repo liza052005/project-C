@@ -37,7 +37,7 @@ int main()
         for (j = 0; j < 2; j++)
         {
             c[i][j] = 0;
-            for (int k = 0; k < 2; k++)  // k объявлен прямо в цикле
+            for (int k = 0; k < 2; k++)
             {
                 c[i][j] += b[i][k] * b[k][j];
             }
