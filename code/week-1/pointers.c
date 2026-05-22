@@ -3,15 +3,12 @@
 int main()
 {
     int number = 42;
-    int *ptr;  // указатель на int
-    
-    ptr = &number;  // ptr теперь хранит адрес number
-    
+    int *ptr;
+    ptr = &number;
     printf("1. Значение number: %d\n", number);
     printf("2. Адрес number: %p\n", &number);
     printf("3. Значение ptr (адрес в памяти): %p\n", ptr);
     printf("4. Что лежит по адресу в ptr: %d\n", *ptr);
-    
     return 0;
 }
 #include <stdio.h>
@@ -21,16 +18,12 @@ int main()
     int x = 100;
     int *ptr1, *ptr2;
     
-    ptr1 = &x;  // оба указателя указывают на x
+    ptr1 = &x;
     ptr2 = &x;
-    
     printf("1. x = %d\n", x);
     printf("2. *ptr1 = %d\n", *ptr1);
     printf("3. *ptr2 = %d\n", *ptr2);
-    
-    // Меняем через ptr1
     *ptr1 = 200;
-    
     printf("\nПосле изменения через ptr1:\n");
     printf("4. x = %d\n", x);
     printf("5. *ptr1 = %d\n", *ptr1);
@@ -38,33 +31,25 @@ int main()
     
     return 0;
 }
-
 #include <stdio.h>
 
 int main()
 {
     int value = 10;
     int *pointer = &value;
-    
     printf("До изменения: value = %d\n", value);
-    
-    // Меняем значение через указатель
     *pointer = 50;
-    
     printf("После изменения: value = %d\n", value);
     printf("Через указатель: *pointer = %d\n", *pointer);
     
     return 0;
 }
-
 #include <stdio.h>
-
 int main()
 {
     int number = 5;
-    int *ptr = &number;      // указатель на int
-    int **ptr2ptr = &ptr;    // указатель на указатель
-    
+    int *ptr = &number;
+    int **ptr2ptr = &ptr;
     printf("1. number = %d\n", number);
     printf("2. Адрес number: %p\n", &number);
     printf("3. ptr хранит: %p\n", ptr);
@@ -77,22 +62,16 @@ int main()
 }
 
 #include <stdio.h>
-
-// Функция принимает указатель
 void change_value(int *p)
 {
-    *p = 999;  // меняем значение по адресу
+    *p = 999;
 }
 
 int main()
 {
     int num = 10;
-    
     printf("До вызова функции: num = %d\n", num);
-    
-    // Передаем адрес переменной
     change_value(&num);
-    
     printf("После вызова функции: num = %d\n", num);
     
     return 0;

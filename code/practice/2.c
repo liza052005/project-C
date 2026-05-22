@@ -1,55 +1,55 @@
 #include <stdio.h>
 #include <windows.h>
+
 int main()
 {
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
-    double a[3][3];
-    double sum_main = 0, sum_secondary = 0;
+
+    double mat[3][3];
+    double sum1 = 0, sum2 = 0;
     int i, j;
-    printf("Введите матрицу 3х3:\n");
-    for (i = 0; i < 3; i++)
+    printf("Введи матрицу 3х3 (9 чисел):\n");
+    for(i = 0; i < 3; i++)
     {
-        for (j = 0; j < 3; j++)
+        printf("Строка %d: ", i+1);
+        for(j = 0; j < 3; j++)
         {
-            scanf("%lf", &a[i][j]);
+            scanf("%lf", &mat[i][j]);
         }
     }
-    for (i = 0; i < 3; i++)
+    for(i = 0; i < 3; i++)
     {
-        sum_main += a[i][i];
-        sum_secondary += a[i][2 - i];
+        sum1 += mat[i][i];
+        sum2 += mat[i][2-i];
     }
-    printf("Сумма по главной диагонали: %.2lf\n", sum_main);
-    printf("Сумма второстепенной диагонали: %.2lf\n\n", sum_secondary);
-    int b[2][2], c[2][2];
-    printf("Введите матрицу 2х2:\n");
-    for (i = 0; i < 2; i++)
+    printf("\nГлавная диагональ = %.2f\n", sum1);
+    printf("Побочная диагональ = %.2f\n\n", sum2);
+
+    int A[2][2], rez[2][2];
+
+    printf("Введи матрицу 2х2 (4 целых числа):\n");
+    for(i = 0; i < 2; i++)
     {
-        for (j = 0; j < 2; j++)
+        printf("Строка %d: ", i+1);
+        for(j = 0; j < 2; j++)
         {
-            scanf("%d", &b[i][j]);
+            scanf("%d", &A[i][j]);
         }
     }
-    for (i = 0; i < 2; i++)
+    for(i = 0; i < 2; i++)
     {
-        for (j = 0; j < 2; j++)
+        for(j = 0; j < 2; j++)
         {
-            c[i][j] = 0;
-            for (int k = 0; k < 2; k++)
-            {
-                c[i][j] += b[i][k] * b[k][j];
-            }
+            rez[i][j] = A[i][0]*A[0][j] + A[i][1]*A[1][j];
         }
     }
-    printf("square matrix:\n");
-    for (i = 0; i < 2; i++)
+    printf("\nКвадрат матрицы:\n");
+    for(i = 0; i < 2; i++)
     {
-        for (j = 0; j < 2; j++)
-        {
-            printf("%d ", c[i][j]);
-        }
-        printf("\n");
+        printf("%d %d\n", rez[i][0], rez[i][1]);
     }
+
+    system("pause");
     return 0;
 }

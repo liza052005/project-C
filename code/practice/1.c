@@ -6,20 +6,31 @@ int main()
 {
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
-    double a, b, c, x1, x2, D;
-    printf("Введите коэф-ты (a b c): \n");
-    scanf("%lf %lf %lf", &a, &b, &c);
-    D = pow(b, 2) - 4 * a * c;
-    if(D >= 0)
+
+    float a, b, c;
+    float d, x1, x2;
+
+    printf("Введите a, b, c: ");
+    scanf("%f %f %f", &a, &b, &c);
+
+    d = b*b - 4*a*c;
+
+    if(d < 0)
     {
-        x1 = (-b + sqrt(D)) / (2 * a);
-        x2 = (-b - sqrt(D)) / (2 * a);
-        printf("Корни уравнения: x1 = %.2lf, x2 = %.2lf\n", x1, x2);
+        printf("Нет корней\n");
+    }
+    else if(d == 0)
+    {
+        x1 = -b / (2*a);
+        printf("Один корень: %.2f\n", x1);
     }
     else
     {
-        printf("Нет действительных корней\n");
+        x1 = (-b + sqrt(d)) / (2*a);
+        x2 = (-b - sqrt(d)) / (2*a);
+        printf("x1 = %.2f, x2 = %.2f\n", x1, x2);
     }
 
+    system("pause");
     return 0;
 }

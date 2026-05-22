@@ -9,14 +9,12 @@ int main()
     SetConsoleCP(CP_UTF8);
     FILE *input, *output;
     char line[200];
-    
     input = fopen("people.txt", "r");
     if(input == NULL)
     {
         printf("Ошибка: файл people.txt не найден!\n");
         return 1;
     }
-    
     output = fopen("result.txt", "w");
     if(output == NULL)
     {
@@ -24,7 +22,6 @@ int main()
         fclose(input);
         return 1;
     }
-    
     while(fgets(line, sizeof(line), input) != NULL)
     {
         line[strcspn(line, "\n")] = 0;

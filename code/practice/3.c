@@ -1,31 +1,34 @@
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>  // Для toupper()
 #include <windows.h>
 
 int main()
 {
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
-    char s[81];
-    printf("Введите строку до 80 символов:\n");
-    if (fgets(s, sizeof(s), stdin) == NULL) {
-        printf("Ошибка ввода!\n");
-        return 1;
-    }
-    s[strcspn(s, "\n")] = '\0';
-
-    for (int i = 0; s[i] != '\0'; i++)
+    char str[100];
+    int i;
+    printf("Введите строку: ");
+    gets(str);
+    for(i = 0; str[i] != '\0'; i++)
     {
-        if (s[i] == 'a' || s[i] == 'b')
+        if(str[i] == 'a')
         {
-            s[i] = toupper(s[i]);
+            str[i] = 'A';
         }
-        else if (s[i] == 'а' || s[i] == 'б')
+        else if(str[i] == 'b')
         {
-            s[i] = s[i] - 32;
+            str[i] = 'B';
+        }
+        else if(str[i] == 'а')
+        {
+            str[i] = 'А';
+        }
+        else if(str[i] == 'б')
+        {
+            str[i] = 'Б';
         }
     }
-    printf("Result: %s\n", s);
-    return 0;
+    printf("Результат: %s\n", str);
+    system("pause");
 }
