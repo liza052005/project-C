@@ -1,34 +1,27 @@
 #include <stdio.h>
-
+#include <windows.h>
 int main()
 {
-    float numbers[5]; /* Массив на 5 чисел */
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+    float numbers[5];
     float sum = 0, average;
     float max;
     int i = 0;
-    
-    /* Ввод 5 чисел */
     printf("Введите 5 чисел:\n");
-    
     while(i < 5)
     {
         printf("Число %d: ", i + 1);
         scanf("%f", &numbers[i]);
         i = i + 1;
     }
-    
-    /* Вычисление суммы */
     sum = 0;
     for(i = 0; i < 5; i++)
     {
         sum = sum + numbers[i];
     }
-    
-    /* Вычисление среднего */
     average = sum / 5;
-    
-    /* Поиск максимального */
-    max = numbers[0]; /* Предполагаем, что первое - максимальное */
+    max = numbers[0];
     for(i = 1; i < 5; i++)
     {
         if(numbers[i] > max)
@@ -36,11 +29,6 @@ int main()
             max = numbers[i];
         }
     }
-    
-    /* Вывод результатов */
-    printf("\n=== РЕЗУЛЬТАТЫ ===\n");
-    
-    /* Вывод всех чисел */
     printf("Введенные числа: ");
     for(i = 0; i < 5; i++)
     {

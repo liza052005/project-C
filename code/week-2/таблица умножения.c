@@ -1,28 +1,22 @@
 #include <stdio.h>
+#include <windows.h>
 
 int main()
 {
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
     int n, i;
-    
-    /* Ввод числа */
+
     printf("Введите число от 1 до 10: ");
     scanf("%d", &n);
-    
-    /* Проверка диапазона */
     if(n < 1 || n > 10)
     {
         printf("Ошибка! Число должно быть от 1 до 10\n");
-        return 1; /* Завершаем с ошибкой */
+        return 1;
     }
-    
-    /* Вывод таблицы */
-    printf("\nТаблица умножения для %d:\n", n);
-    printf("---------------------\n");
-    
     for(i = 1; i <= 10; i = i + 1)
     {
         printf("%d x %d = %d\n", i, n, i * n);
     }
-    
     return 0;
 }
